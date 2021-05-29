@@ -10,6 +10,14 @@
       "StackName": "amplify-reactamplified-dev-165308",
       "StackId": "arn:aws:cloudformation:us-west-2:101897091992:stack/amplify-reactamplified-dev-165308/dbf2ffb0-c00f-11eb-b4e1-0a48475ddc1f",
       "AmplifyAppId": "d7pc43x5jp22g"
+    },
+    "categories": {
+      "function": {
+        "reactamplified3af073c6": {
+          "deploymentBucketName": "amplify-reactamplified-dev-165308-deployment",
+          "s3Key": "amplify-builds/reactamplified3af073c6-54364f4c6e5344533536-build.zip"
+        }
+      }
     }
   }
 }
