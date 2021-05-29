@@ -7,17 +7,9 @@
             "Default" : "NONE",
             "Description" : " Schedule Expression"
         },
-        "deploymentBucketName": {
-            "Type": "String"
-        },
         "env": {
             "Type": "String"
-        },
-        "s3Key": {
-            "Type": "String"
         }
-    
-    
     
     },
     "Conditions": {
@@ -38,25 +30,17 @@
             "aws:asset:property": "Code"
           },
           "Properties": {
-            "Code": {
-                "S3Bucket": {
-                    "Ref": "deploymentBucketName"
-                },
-                "S3Key": {
-                    "Ref": "s3Key"
-                }
-            },
             "Handler": "index.handler",
             "FunctionName": {
                 "Fn::If": [
                     "ShouldNotCreateEnvResources",
-                    "mylambda",
+                    "reactamplified3af073c6",
                     {
 
                         "Fn::Join": [
                             "",
                             [
-                                "mylambda",
+                                "reactamplified3af073c6",
                                 "-",
                                 {
                                     "Ref": "env"
@@ -69,8 +53,8 @@
             "Environment": {
                 "Variables" : {"ENV":{"Ref":"env"},"REGION":{"Ref":"AWS::Region"}}
             },
-            "Role": { "Fn::GetAtt": ["LambdaExecutionRole", "Arn"] },
-            "Runtime": "nodejs14.x",
+            "Role": { "Fn::GetAtt" : ["LambdaExecutionRole", "Arn"] },
+            "Runtime": "nodejs12.x",
             "Layers": [],
             "Timeout": "25"
           }
@@ -81,13 +65,13 @@
                 "RoleName": {
                     "Fn::If": [
                         "ShouldNotCreateEnvResources",
-                        "reactamplifiedLambdaRole247bad66",
+                        "reactamplifiedLambdaRole3f22e983",
                         {
 
                             "Fn::Join": [
                                 "",
                                 [
-                                    "reactamplifiedLambdaRole247bad66",
+                                    "reactamplifiedLambdaRole3f22e983",
                                     "-",
                                     {
                                         "Ref": "env"
@@ -126,10 +110,10 @@
                     "Statement": [
                         {
                             "Effect": "Allow",
-                            "Action": ["logs:CreateLogGroup",
+                            "Action":["logs:CreateLogGroup",
                             "logs:CreateLogStream",
                             "logs:PutLogEvents"],
-                            "Resource": { "Fn::Sub": [ "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*", { "region": {"Ref": "AWS::Region"}, "account": {"Ref": "AWS::AccountId"}, "lambda": {"Ref": "LambdaFunction"}} ]}
+                            "Resource": { "Fn::Sub" : [ "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*", { "region": {"Ref": "AWS::Region"},  "account": {"Ref": "AWS::AccountId"}, "lambda": {"Ref": "LambdaFunction"}} ]}
                         }
                     ]
                 }

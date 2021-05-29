@@ -1,10 +1,9 @@
 {
   "function": {
-    "mylambda": {
+    "reactamplified3af073c6": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": []
+      "service": "Lambda"
     }
   }
 }
